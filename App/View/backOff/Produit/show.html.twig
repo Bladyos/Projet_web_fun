@@ -43,7 +43,7 @@
 			{% for produit in panier if panier is not empty %}
 
 				<tr>
-					<td>{{produit.id}}</td><td>{{produit.nom}}</td><td>{{produit.quantite}}</td><td>{{produit.prix}}</td><td>TODO</td>
+					<td>{{produit.id}}</td><td>{{produit.nom}}</td><td>{{produit.quantite}}</td><td>{{produit.prix}}</td><td>{{ (produit.quantite * produit.prix)|number_format(2, '.', ',') }}</td>
 					<td><a href="{{ path('panier.delete', {id: produit.id}) }}">Supprimer</a></td>
 
 
