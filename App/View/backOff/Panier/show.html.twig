@@ -1,0 +1,27 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+	<div class="row">
+		{% if   app.session.get('droit') is defined and  app.session.get('droit') == 'DROITadmin' %}
+			<a href="{{ path('produit.add') }}"> Ajouter un produit </a>
+		{% endif %}
+
+		<table>
+			<caption>Votre panier :</caption>
+			<thead>
+			<th>id</th><th>quantite</th><th>prix</th><th>date Ajout Panier</th><th>Nom du S1</th><th>Photo</th><th>ID de la commande</th><th>Supprimer</th>
+			</thead>
+			<tbody>
+			{% for produit in panier if panier is not empty %}
+
+				<tr>
+					<td>{{produit.id}}</td><td>{{produit.nom}}</td><td>{{produit.quantite}}</td><td>{{produit.prix}}</td>
+					<td>{{produit.commande_id}}</td><td><a href="{{ path('panier.delete', {id: produit.id}) }}">Supprimer</a></td>
+
+
+				</tr>
+			{% endfor %}
+			<tbody>
+		</table>
+	</div>
+{% endblock %}
+
